@@ -1,0 +1,42 @@
+name: Game CI/CD
+
+on:
+  push:
+    branches: [ develop, feature/** ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python  # Встановлення Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies  # Встановлення залежностей
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov
+
+    - name: Run tests  # Запуск тестів
+      run: |
+        pytest tests/ --cov=src --cov-report=html
+
+    - name: Build project  # Збірка проекту
+      run: |
+        chmod +x ci/build.sh
+        ./ci/build.sh
+
+    - name: Archive artifacts  # Збереження артефактів
+      uses: actions/upload-artifact@v2
+      with:
+        name: game-artifacts
+        path: |
+          artifacts/
+          htmlcov/

@@ -9,14 +9,14 @@ This repository contains laboratory works and a course project for the "Computer
 - **Configuration Format**: INI
 
 ## Student Information
-- **Group**: <KI-408>
-- **Full Name**: <Малець Дмитро Олегович>
+- **Group**: KI-408
+- **Full Name**: Малець Дмитро Олегович
 - **Student Number**: 12
 
 ## Technical Details
-- **Programming Language**: C++
-- **Hardware Platform**: Arduino (recommended CY8CKIT-042 PSoC® 4 Pioneer Kit)
-- **Development Environment**: Arduino IDE
+- **Programming Language**: Python
+- **Hardware Platform**: Raspberry Pi3 Model B
+- **Development Environment**: PyCharm Professional
 
 ## Project Structure
 - `3party/` - Third-party tools
