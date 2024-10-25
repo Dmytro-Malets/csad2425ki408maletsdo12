@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 import sys
 import os
 import configparser
@@ -9,19 +9,17 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.server.server import GameServer
 from src.common.config_handler import ConfigHandler
 
-class MockSerial:
-    def __init__(self, *args, **kwargs):
-        self.write = Mock()
-        self.read = Mock(return_value=b'')
 
 class TestGameLogic(unittest.TestCase):
-    def setUp(self):
-        # Замінюємо справжній Serial на наш mock
-        GameServer.serial.Serial = MockSerial
-        self.game = GameServer()
+    @patch('serial.Serial')  # Патчимо serial.Serial замість GameServer.serial
+    def setUp(self, mock_serial):
+        # Налаштовуємо мок для serial
+        self.mock_serial = mock_serial.return_value
+        self.mock_serial.write = Mock()
+        self.mock_serial.readline = Mock(return_value=b'')
+        self.mock_serial.in_waiting = 0
 
-class TestGameLogic(unittest.TestCase):
-    def setUp(self):
+        # Створюємо екземпляр GameServer з мокнутим serial
         self.game = GameServer()
 
     def test_determine_winner_draw(self):
@@ -60,6 +58,12 @@ class TestConfigHandler(unittest.TestCase):
             'server_score': '0',
             'games_played': '0'
         }
+        config['LastGame'] = {
+            'player_move': '',
+            'server_move': '',
+            'result': '',
+            'timestamp': ''
+        }
 
         with open(self.test_config_path, 'w') as configfile:
             config.write(configfile)
@@ -67,20 +71,17 @@ class TestConfigHandler(unittest.TestCase):
         self.config_handler = ConfigHandler(self.test_config_path)
 
     def test_load_config(self):
-        # Перевіряємо чи правильно завантажуються налаштування з'єднання
         conn_settings = self.config_handler.get_connection_settings()
         self.assertEqual(conn_settings['port'], 'COM3')
         self.assertEqual(conn_settings['baudrate'], 115200)
         self.assertEqual(conn_settings['timeout'], 1)
 
     def test_get_game_settings(self):
-        # Перевіряємо налаштування гри
         game_settings = self.config_handler.get_game_settings()
         self.assertTrue(game_settings['save_stats'])
         self.assertEqual(game_settings['default_mode'], 'man_vs_ai')
 
     def test_update_game_stats(self):
-        # Тестуємо оновлення статистики
         self.config_handler.update_game_stats("rock", "scissors", "You win!")
         stats = self.config_handler.get_stats()
         self.assertEqual(stats['player_score'], 1)
@@ -88,7 +89,6 @@ class TestConfigHandler(unittest.TestCase):
         self.assertEqual(stats['games_played'], 1)
 
     def test_reset_stats(self):
-        # Тестуємо скидання статистики
         self.config_handler.update_game_stats("rock", "scissors", "You win!")
         self.config_handler.reset_stats()
         stats = self.config_handler.get_stats()
@@ -97,7 +97,6 @@ class TestConfigHandler(unittest.TestCase):
         self.assertEqual(stats['games_played'], 0)
 
     def tearDown(self):
-        # Видаляємо тестовий конфіг після завершення тестів
         if os.path.exists(self.test_config_path):
             os.remove(self.test_config_path)
         if os.path.exists(self.test_config_dir):

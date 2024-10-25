@@ -20,3 +20,4 @@ dump.sql
 *.bak
 *.swp
 *.swo
+.coverage
