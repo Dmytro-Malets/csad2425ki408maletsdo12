@@ -31,12 +31,11 @@
    <string>Rock-scissors-paper</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
-    <normaloff>:/icons/media/rock-paper-scissors.png</normaloff>:/icons/media/rock-paper-scissors.png</iconset>
+   <iconset>
+    <normaloff>:/icons/rock-paper-scissors.png</normaloff>:/icons/rock-paper-scissors.png</iconset>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(30, 95, 50, 255), stop:0.427447 rgba(30, 85, 85, 255), stop:1 rgba(30, 40, 100, 255));
 font-family: Banshrift-Light;</string>
   </property>
   <property name="iconSize">
@@ -145,6 +144,9 @@ font-family: Banshrift-Light;</string>
       <height>101</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
+    </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
       <number>7</number>
@@ -205,8 +207,8 @@ background-color: rgba(255,255,255,88);
         <string>Reset statistic</string>
        </property>
        <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/icons/media/reset.png</normaloff>:/icons/media/reset.png</iconset>
+        <iconset>
+         <normaloff>:/icons/reset.png</normaloff>:/icons/reset.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -266,8 +268,8 @@ background-color: rgba(255,255,255,88);
         <string notr="true">Statistic</string>
        </property>
        <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/icons/media/statistics.png</normaloff>:/icons/media/statistics.png</iconset>
+        <iconset resource="../resources/res.qrc">
+         <normaloff>:/icons/statistics.png</normaloff>:/icons/statistics.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -301,6 +303,9 @@ background-color: rgba(255,255,255,88);
      <font>
       <family>Banshrift-Light</family>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_5">
      <property name="spacing">
@@ -474,8 +479,8 @@ background-color: rgba(255,255,255,88);
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/icons/media/rock.png</normaloff>:/icons/media/rock.png</iconset>
+        <iconset>
+         <normaloff>:/icons/rock.png</normaloff>:/icons/rock.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -512,8 +517,8 @@ background-color: rgba(255,255,255,88);
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/icons/media/scissors.png</normaloff>:/icons/media/scissors.png</iconset>
+        <iconset>
+         <normaloff>:/icons/scissors.png</normaloff>:/icons/scissors.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -550,8 +555,8 @@ background-color: rgba(255,255,255,88);
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="res.qrc">
-         <normaloff>:/icons/media/paper.png</normaloff>:/icons/media/paper.png</iconset>
+        <iconset>
+         <normaloff>:/icons/paper.png</normaloff>:/icons/paper.png</iconset>
        </property>
        <property name="iconSize">
         <size>
@@ -574,6 +579,9 @@ background-color: rgba(255,255,255,88);
       <width>791</width>
       <height>161</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="leftMargin">
@@ -601,6 +609,12 @@ background-color: rgba(255,255,255,88);
          <width>155</width>
          <height>155</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Banshrift-Light</family>
+         <pointsize>11</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
@@ -637,7 +651,7 @@ background-color: rgba(255,255,255,88);
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="res.qrc">:/icons/media/versus.png</pixmap>
+        <pixmap>:/icons/versus.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -685,6 +699,9 @@ background-color: rgba(255,255,255,88);
       <width>651</width>
       <height>50</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_6">
      <item>
@@ -892,7 +909,7 @@ background-color: rgba(255,255,255,88);
 }</string>
           </property>
           <property name="text">
-           <string>AI</string>
+           <string>Player B</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -904,10 +921,148 @@ background-color: rgba(255,255,255,88);
      </item>
     </layout>
    </widget>
+   <widget class="QComboBox" name="game_mode_combo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>130</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>130</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Banshrift-Light</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+	background-color: rgba(255, 255, 255, 50);
+	border-radius : 4px;
+	color: white;
+}
+
+QComboBox:pressed {
+background-color: rgba(255,255,255,88);
+}
+
+QComboBox QAbstractItemView {
+    color: white;
+}
+</string>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="difficulty_combo">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>130</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>130</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>130</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Banshrift-Light</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox{
+	background-color: rgba(255, 255, 255, 50);
+	border-radius : 4px;
+	color: white;
+}
+
+QComboBox:pressed {
+background-color: rgba(255,255,255,88);
+}
+
+QComboBox QAbstractItemView {
+    color: white;
+}
+</string>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stop_btn">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>234</y>
+      <width>30</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: none;
+    color: white;
+    border: none;
+    border-radius: 20px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>:/icons/stop.png</normaloff>:/icons/stop.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../resources/res.qrc"/>
  </resources>
  <connections/>
 </ui>

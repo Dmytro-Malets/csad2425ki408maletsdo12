@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 import res_rc
 
 class Ui_MainWindow(object):
@@ -31,10 +31,9 @@ class Ui_MainWindow(object):
         font.setFamilies([u"Banshrift-Light"])
         MainWindow.setFont(font)
         icon = QIcon()
-        icon.addFile(u":/icons/media/rock-paper-scissors.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/icons/rock-paper-scissors.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"background-color: #8BC6EC;\n"
-"background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);\n"
+        MainWindow.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(30, 95, 50, 255), stop:0.427447 rgba(30, 85, 85, 255), stop:1 rgba(30, 40, 100, 255));\n"
 "font-family: Banshrift-Light;")
         MainWindow.setIconSize(QSize(40, 40))
         self.centralwidget = QWidget(MainWindow)
@@ -75,6 +74,7 @@ class Ui_MainWindow(object):
         self.statistic_btns_frame = QFrame(self.centralwidget)
         self.statistic_btns_frame.setObjectName(u"statistic_btns_frame")
         self.statistic_btns_frame.setGeometry(QRect(660, 60, 131, 101))
+        self.statistic_btns_frame.setStyleSheet(u"background-color: none;")
         self.verticalLayout = QVBoxLayout(self.statistic_btns_frame)
         self.verticalLayout.setSpacing(7)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon1 = QIcon()
-        icon1.addFile(u":/icons/media/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon1.addFile(u":/icons/reset.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.reset_statistic_btn.setIcon(icon1)
         self.reset_statistic_btn.setIconSize(QSize(20, 20))
         self.reset_statistic_btn.setCheckable(True)
@@ -136,7 +136,7 @@ class Ui_MainWindow(object):
 "")
         self.show_statistic_btn.setText(u"Statistic")
         icon2 = QIcon()
-        icon2.addFile(u":/icons/media/statistics.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon2.addFile(u":/icons/statistics.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.show_statistic_btn.setIcon(icon2)
         self.show_statistic_btn.setIconSize(QSize(20, 20))
         self.show_statistic_btn.setCheckable(True)
@@ -148,6 +148,7 @@ class Ui_MainWindow(object):
         self.games_played_couter_frame.setGeometry(QRect(290, 230, 261, 41))
         self.games_played_couter_frame.setMaximumSize(QSize(261, 41))
         self.games_played_couter_frame.setFont(font)
+        self.games_played_couter_frame.setStyleSheet(u"background-color: none;")
         self.horizontalLayout_5 = QHBoxLayout(self.games_played_couter_frame)
         self.horizontalLayout_5.setSpacing(1)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -222,7 +223,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon3 = QIcon()
-        icon3.addFile(u":/icons/media/rock.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon3.addFile(u":/icons/rock.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.rock_btn.setIcon(icon3)
         self.rock_btn.setIconSize(QSize(120, 120))
         self.rock_btn.setCheckable(True)
@@ -238,7 +239,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon4 = QIcon()
-        icon4.addFile(u":/icons/media/scissors.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon4.addFile(u":/icons/scissors.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.scissors_btn.setIcon(icon4)
         self.scissors_btn.setIconSize(QSize(120, 120))
         self.scissors_btn.setCheckable(True)
@@ -254,7 +255,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon5 = QIcon()
-        icon5.addFile(u":/icons/media/paper.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon5.addFile(u":/icons/paper.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.paper_btn.setIcon(icon5)
         self.paper_btn.setIconSize(QSize(120, 120))
         self.paper_btn.setCheckable(True)
@@ -264,6 +265,7 @@ class Ui_MainWindow(object):
         self.choices_frame = QFrame(self.centralwidget)
         self.choices_frame.setObjectName(u"choices_frame")
         self.choices_frame.setGeometry(QRect(10, 290, 791, 161))
+        self.choices_frame.setStyleSheet(u"background-color: none;")
         self.horizontalLayout_2 = QHBoxLayout(self.choices_frame)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(5, 5, 5, 5)
@@ -271,6 +273,10 @@ class Ui_MainWindow(object):
         self.first_choice_icon_lb.setObjectName(u"first_choice_icon_lb")
         self.first_choice_icon_lb.setMinimumSize(QSize(155, 155))
         self.first_choice_icon_lb.setMaximumSize(QSize(155, 155))
+        font6 = QFont()
+        font6.setFamilies([u"Banshrift-Light"])
+        font6.setPointSize(11)
+        self.first_choice_icon_lb.setFont(font6)
         self.first_choice_icon_lb.setStyleSheet(u"QLabel {\n"
 "    border: 2px solid white;\n"
 "    border-radius: 10px;\n"
@@ -284,7 +290,7 @@ class Ui_MainWindow(object):
         self.vs_icon_lb.setObjectName(u"vs_icon_lb")
         self.vs_icon_lb.setMinimumSize(QSize(155, 155))
         self.vs_icon_lb.setMaximumSize(QSize(155, 155))
-        self.vs_icon_lb.setPixmap(QPixmap(u":/icons/media/versus.png"))
+        self.vs_icon_lb.setPixmap(QPixmap(u":/icons/versus.png"))
         self.vs_icon_lb.setScaledContents(True)
 
         self.horizontalLayout_2.addWidget(self.vs_icon_lb)
@@ -305,6 +311,7 @@ class Ui_MainWindow(object):
         self.players_score_frame = QFrame(self.centralwidget)
         self.players_score_frame.setObjectName(u"players_score_frame")
         self.players_score_frame.setGeometry(QRect(80, 460, 651, 50))
+        self.players_score_frame.setStyleSheet(u"background-color: none;")
         self.horizontalLayout_6 = QHBoxLayout(self.players_score_frame)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.first_player_frame = QFrame(self.players_score_frame)
@@ -391,6 +398,64 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.second_player_frame)
 
+        self.game_mode_combo = QComboBox(self.centralwidget)
+        self.game_mode_combo.setObjectName(u"game_mode_combo")
+        self.game_mode_combo.setGeometry(QRect(20, 70, 130, 25))
+        self.game_mode_combo.setMinimumSize(QSize(130, 25))
+        self.game_mode_combo.setMaximumSize(QSize(130, 25))
+        self.game_mode_combo.setFont(font6)
+        self.game_mode_combo.setStyleSheet(u"QComboBox{\n"
+"	background-color: rgba(255, 255, 255, 50);\n"
+"	border-radius : 4px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QComboBox:pressed {\n"
+"background-color: rgba(255,255,255,88);\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    color: white;\n"
+"}\n"
+"")
+        self.game_mode_combo.setEditable(False)
+        self.difficulty_combo = QComboBox(self.centralwidget)
+        self.difficulty_combo.setObjectName(u"difficulty_combo")
+        self.difficulty_combo.setGeometry(QRect(20, 120, 130, 25))
+        self.difficulty_combo.setMinimumSize(QSize(130, 25))
+        self.difficulty_combo.setMaximumSize(QSize(130, 25))
+        self.difficulty_combo.setFont(font6)
+        self.difficulty_combo.setStyleSheet(u"QComboBox{\n"
+"	background-color: rgba(255, 255, 255, 50);\n"
+"	border-radius : 4px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QComboBox:pressed {\n"
+"background-color: rgba(255,255,255,88);\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    color: white;\n"
+"}\n"
+"")
+        self.difficulty_combo.setEditable(False)
+        self.stop_btn = QPushButton(self.centralwidget)
+        self.stop_btn.setObjectName(u"stop_btn")
+        self.stop_btn.setGeometry(QRect(250, 234, 30, 30))
+        self.stop_btn.setMinimumSize(QSize(30, 30))
+        self.stop_btn.setMaximumSize(QSize(30, 30))
+        self.stop_btn.setStyleSheet(u"QPushButton {\n"
+"    background-color: none;\n"
+"    color: white;\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"}\n"
+"")
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/stop.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.stop_btn.setIcon(icon6)
+        self.stop_btn.setIconSize(QSize(30, 30))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -414,6 +479,7 @@ class Ui_MainWindow(object):
         self.first_choice_player_name_lb.setText(QCoreApplication.translate("MainWindow", u"You", None))
         self.first_choice_player_score_lb.setText("")
         self.second_choice_player_score_lb.setText("")
-        self.second_choice_player_name_lb.setText(QCoreApplication.translate("MainWindow", u"AI", None))
+        self.second_choice_player_name_lb.setText(QCoreApplication.translate("MainWindow", u"Player B", None))
+        self.stop_btn.setText("")
     # retranslateUi
 
