@@ -1,11 +1,38 @@
+"""!
+@file server.py
+@brief Server implementation for Rock-Paper-Scissors game using serial communication.
+
+This file implements the server-side logic for a Rock-Paper-Scissors game,
+handling serial communication with clients and implementing game mechanics
+for different modes (Player vs AI, Player vs Player, AI vs AI).
+
+@author Dmytro Malets
+@date 2024-11-04
+"""
+
 import serial
 import json
 import random
 
 
 class GameServer:
+    """!
+    @brief Server implementation for the Rock-Paper-Scissors game.
+
+    This class implements the server-side logic for a Rock-Paper-Scissors game,
+    handling serial communication with clients, game moves processing, and
+    implementing various game modes including player vs AI and player vs player.
+
+    @note The server runs on a Raspberry Pi 3 Model B and communicates via serial connection
+    """
     def __init__(self):
-        # Configure serial connection
+        """!
+        @brief Initialize the GameServer with serial connection settings.
+
+        Sets up the serial connection with predefined parameters and initializes
+        game state variables.
+        """
+        ## @brief Serial connection object
         self.ser = serial.Serial(
             port='/dev/serial0',
             baudrate=115200,
@@ -14,9 +41,23 @@ class GameServer:
             bytesize=serial.EIGHTBITS,
             timeout=1
         )
+        ## @brief Stores the last move for AI strategy
         self.last_move = None
 
     def determine_winner(self, player_move, server_move):
+        """!
+        @brief Determine the winner of a game round.
+
+        Implements the Rock-Paper-Scissors game logic to determine the winner
+        based on classic rules:
+        - Rock beats Scissors
+        - Scissors beats Paper
+        - Paper beats Rock
+
+        @param player_move The move chosen by the player ("rock", "paper", or "scissors")
+        @param server_move The move chosen by the server ("rock", "paper", or "scissors")
+        @return str Returns "Draw", "You win!", or "Server wins!" based on the game outcome
+        """
         if player_move == server_move:
             return "Draw"
         elif (
@@ -29,6 +70,22 @@ class GameServer:
             return "Server wins!"
 
     def get_server_move(self, difficulty, game_mode="man_vs_ai"):
+        """!
+        @brief Generate server's move based on game mode and difficulty.
+
+        In AI mode, generates moves based on difficulty settings:
+        - Easy: 70% chance to repeat last move
+        - Medium: 30% chance to repeat last move
+        - Hard: Pure random choice
+
+        In PvP mode, prompts Player B for input.
+
+        @param difficulty The game difficulty level ("easy", "medium", "hard")
+        @param game_mode The game mode ("man_vs_ai", "man_vs_man", "ai_vs_ai")
+        @return str The selected move ("rock", "paper", or "scissors")
+        @throws KeyboardInterrupt When user interrupts input in PvP mode
+        """
+        # Handle PvP mode
         if game_mode == "man_vs_man":
             print("\nPlayer B's turn! Enter your move (rock/paper/scissors):")
             while True:
@@ -42,10 +99,12 @@ class GameServer:
                 except Exception as e:
                     print(f"Error reading input: {e}. Please try again.")
 
-        # AI logic for other modes remains the same
+        # AI logic for other modes
+        ## @brief Implement easy mode strategy
         if difficulty == "easy":
             if self.last_move and random.random() < 0.7:
                 return self.last_move
+        ## @brief Implement medium mode strategy
         elif difficulty == "medium":
             if self.last_move and random.random() < 0.3:
                 return self.last_move
@@ -55,6 +114,18 @@ class GameServer:
         return move
 
     def run(self):
+        """!
+        @brief Start the game server and handle client connections.
+
+        Main server loop that:
+        1. Waits for client moves via serial connection
+        2. Processes received moves
+        3. Generates server responses
+        4. Sends results back to client
+
+        @note The server runs indefinitely until interrupted
+        @throws json.JSONDecodeError When received invalid JSON data
+        """
         print("Server is running. Waiting for moves...")
         while True:
             try:
