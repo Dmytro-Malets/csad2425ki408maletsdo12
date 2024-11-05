@@ -1,5 +1,5 @@
 <RCC>
   <qresource prefix="icons">
-    <file>media/statistics.png</file>
+    <file>statistics.png</file>
   </qresource>
 </RCC>

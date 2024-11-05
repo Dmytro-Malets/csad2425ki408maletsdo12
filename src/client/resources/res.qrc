@@ -1,11 +1,13 @@
 <RCC>
   <qresource prefix="icons">
-    <file>media/reset.png</file>
-    <file>media/statistics.png</file>
-    <file>media/versus.png</file>
-    <file>media/paper.png</file>
-    <file>media/rock.png</file>
-    <file>media/rock-paper-scissors.png</file>
-    <file>media/scissors.png</file>
+    <file>stop.png</file>
+    <file>paper.png</file>
+    <file>reset.png</file>
+    <file>rock.png</file>
+    <file>rock-paper-scissors.ico</file>
+    <file>rock-paper-scissors.png</file>
+    <file>scissors.png</file>
+    <file>statistics.png</file>
+    <file>versus.png</file>
   </qresource>
 </RCC>

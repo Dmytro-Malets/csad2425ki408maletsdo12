@@ -7,499 +7,1502 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>285</height>
+    <height>350</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>400</width>
-    <height>285</height>
+    <height>350</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>400</width>
-    <height>285</height>
+    <height>350</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Statistic</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res-dialog.qrc">
-    <normaloff>:/icons/media/statistics.png</normaloff>:/icons/media/statistics.png</iconset>
+   <iconset resource="../resources/res-dialog.qrc">
+    <normaloff>:/icons/statistics.png</normaloff>:/icons/statistics.png</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>0.950000000000000</double>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #8BC6EC;
-background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(30, 95, 50, 255), stop:0.427447 rgba(30, 85, 85, 255), stop:1 rgba(30, 40, 100, 255));
 font-family: Banshrift-Light;</string>
   </property>
-  <widget class="QFrame" name="main_statistic_frame">
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>52</y>
+     <width>381</width>
+     <height>291</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>391</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: none;</string>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="page_human_vs_ai">
+    <widget class="QFrame" name="main_statistic_frame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>361</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="total_games_played_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_5">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="total_games_played_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Total games played</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="total_games_played_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="player_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_6">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="player_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Player wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="player_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="ai_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_7">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="ai_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>AI wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ai_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="win_rate_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_8">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="win_rate_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Win rate</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="win_rate_value_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_ai_vs_ai">
+    <widget class="QFrame" name="main_statistic_frame_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>361</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="total_games_ai_vs_ai_played_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_17">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="total_games_ai_vs_ai_played_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Total games played</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="total_games_ai_vs_ai_played_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="ai_client_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_18">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="ai_client_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>AI (client) wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ai_client_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="ai_server_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_19">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="ai_server_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>AI (server) wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ai_server_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="win_rate_ai_vs_ai_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_20">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="win_rate_ai_vs_ai_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Win rate</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="win_rate_ai_vs_ai_value_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_man_vs_man">
+    <widget class="QFrame" name="main_statistic_frame_3">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>361</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: none;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_6">
+      <property name="spacing">
+       <number>8</number>
+      </property>
+      <property name="leftMargin">
+       <number>2</number>
+      </property>
+      <property name="topMargin">
+       <number>2</number>
+      </property>
+      <property name="rightMargin">
+       <number>2</number>
+      </property>
+      <property name="bottomMargin">
+       <number>2</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="total_games_pa_vs_pb_played_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_21">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="total_games_pa_vs_pb_played_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Total games played</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="total_games_pa_vs_pb_played_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="player_a_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_22">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="player_a_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Player A wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="player_a_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="player_b_wins_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_23">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="player_b_wins_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Player B wins</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="player_b_wins_counter_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="win_rate_pa_vs_pb_frame">
+        <layout class="QHBoxLayout" name="total_gemas_played_frame_24">
+         <property name="spacing">
+          <number>3</number>
+         </property>
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="win_rate_pa_vs_pb_text_lb">
+           <property name="minimumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>180</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: none;
+}</string>
+           </property>
+           <property name="text">
+            <string>Win rate</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="win_rate_pa_vs_pb_value_lb">
+           <property name="minimumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>70</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Banshrift-Light</family>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	color: white;
+	background-color: rgba(255, 255, 255, 50);
+    border: 2px solid white;
+    border-radius: 8px;
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::RichText</enum>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>-1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QComboBox" name="statistic_type_cb">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>10</y>
+     <y>11</y>
      <width>361</width>
-     <height>271</height>
+     <height>31</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <property name="spacing">
-     <number>8</number>
-    </property>
-    <property name="leftMargin">
-     <number>2</number>
-    </property>
-    <property name="topMargin">
-     <number>2</number>
-    </property>
-    <property name="rightMargin">
-     <number>2</number>
-    </property>
-    <property name="bottomMargin">
-     <number>2</number>
-    </property>
-    <item>
-     <widget class="QFrame" name="total_games_played_frame">
-      <layout class="QHBoxLayout" name="total_gemas_played_frame">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>1</number>
-       </property>
-       <property name="topMargin">
-        <number>1</number>
-       </property>
-       <property name="rightMargin">
-        <number>1</number>
-       </property>
-       <property name="bottomMargin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="total_games_played_text_lb">
-         <property name="minimumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Total games played</string>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="total_games_played_counter_lb">
-         <property name="minimumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="toolTipDuration">
-          <number>-1</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
+   <property name="font">
+    <font>
+     <family>Banshrift-Light</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
 	background-color: rgba(255, 255, 255, 50);
-    border: 2px solid white;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="player_wins_frame">
-      <layout class="QHBoxLayout" name="total_gemas_played_frame_2">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>1</number>
-       </property>
-       <property name="topMargin">
-        <number>1</number>
-       </property>
-       <property name="rightMargin">
-        <number>1</number>
-       </property>
-       <property name="bottomMargin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="player_wins_text_lb">
-         <property name="minimumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
+	border-radius : 4px;
 	color: white;
-	background-color: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Player wins</string>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="player_wins_counter_lb">
-         <property name="minimumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="toolTipDuration">
-          <number>-1</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: rgba(255, 255, 255, 50);
-    border: 2px solid white;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="ai_wins_frame">
-      <layout class="QHBoxLayout" name="total_gemas_played_frame_3">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>1</number>
-       </property>
-       <property name="topMargin">
-        <number>1</number>
-       </property>
-       <property name="rightMargin">
-        <number>1</number>
-       </property>
-       <property name="bottomMargin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="ai_wins_text_lb">
-         <property name="minimumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>AI wins</string>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="ai_wins_counter_lb">
-         <property name="minimumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="toolTipDuration">
-          <number>-1</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: rgba(255, 255, 255, 50);
-    border: 2px solid white;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="win_rate_frame">
-      <layout class="QHBoxLayout" name="total_gemas_played_frame_4">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>1</number>
-       </property>
-       <property name="topMargin">
-        <number>1</number>
-       </property>
-       <property name="rightMargin">
-        <number>1</number>
-       </property>
-       <property name="bottomMargin">
-        <number>1</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="win_rate_text_lb">
-         <property name="minimumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>180</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Win rate</string>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="win_rate_value_lb">
-         <property name="minimumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>30</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Banshrift-Light</family>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="toolTipDuration">
-          <number>-1</number>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	color: white;
-	background-color: rgba(255, 255, 255, 50);
-    border: 2px solid white;
-    border-radius: 8px;
-}</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="textFormat">
-          <enum>Qt::RichText</enum>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-         <property name="indent">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
+}
+
+QComboBox:pressed {
+background-color: rgba(255,255,255,88);
+}
+
+QComboBox QAbstractItemView {
+    color: white;
+}
+</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>17</width>
+     <height>17</height>
+    </size>
+   </property>
   </widget>
  </widget>
  <resources>
-  <include location="res-dialog.qrc"/>
+  <include location="../resources/res-dialog.qrc"/>
  </resources>
  <connections/>
 </ui>
