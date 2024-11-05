@@ -1,3 +1,15 @@
+"""!
+@file client.py
+@brief Client implementation for Rock-Paper-Scissors game with GUI interface.
+
+This file implements the client-side GUI and game logic for the Rock-Paper-Scissors
+game, featuring multiple game modes (Player vs AI, Player vs Player, AI vs AI),
+statistics tracking, and serial communication with the server.
+
+@author Dmytro Malets
+@date 2024-11-04
+"""
+
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget)
 from PySide6.QtGui import QPixmap
 from PySide6 import QtCore
@@ -9,12 +21,29 @@ from ui_statistic import Ui_Dialog
 
 
 class GameSession:
+    """!
+    @brief Class for tracking game session statistics.
+
+    Maintains current session statistics including games played,
+    player scores, and server scores. Updates stats based on game results.
+    """
     def __init__(self):
+        """!
+        @brief Initialize a new game session with zero scores.
+        """
+        ## @brief Total number of games played in current session
         self.games_played = 0
+        ## @brief Player's score in current session
         self.player_score = 0
+        ## @brief Server's score in current session
         self.server_score = 0
 
     def update_stats(self, result):
+        """!
+        @brief Update session statistics based on game result.
+
+        @param result The game result string ("You win!", "Server wins!", "Draw", etc.)
+        """
         self.games_played += 1
         if result == "You win!" or result == "Player A wins!":
             self.player_score += 1
@@ -23,11 +52,23 @@ class GameSession:
 
 
 class StatisticWindow(QWidget):
+    """!
+    @brief Window for displaying game statistics.
+
+    Displays comprehensive statistics for different game modes including
+    win rates, total games played, and individual scores.
+    """
     def __init__(self, stats):
+        """!
+        @brief Initialize statistics window with game stats.
+
+        @param stats Dictionary containing game statistics
+        """
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
         self.setWindowTitle("Game Statistics")
+        ## @brief Configuration handler instance
         self.config_handler = ConfigHandler()
 
         self.ui.statistic_type_cb.addItems(["Human vs AI", "PVP", "AI vs AI"])
@@ -51,6 +92,13 @@ class StatisticWindow(QWidget):
         self.update_stats(current_mode)
 
     def on_statistic_type_changed(self, stat_type):
+        """!
+        @brief Update displayed statistics based on selected statistic type.
+
+        Changes the displayed statistics view based on the selected type in the combo box.
+
+        @param stat_type The selected statistic type (e.g., "PVP", "Human vs AI").
+        """
         mode = ("man_vs_man" if stat_type == "PVP" else "man_vs_ai" if stat_type == "Human vs AI" else "ai_vs_ai")
 
         if mode == "man_vs_ai":
@@ -63,6 +111,13 @@ class StatisticWindow(QWidget):
         self.update_stats(mode)
 
     def update_stats(self, mode):
+        """!
+        @brief Update statistics displayed in the UI based on the game mode.
+
+        Retrieves and displays game statistics for the given mode.
+
+        @param mode The game mode for which to display statistics ("man_vs_ai", "man_vs_man", "ai_vs_ai").
+        """
         stats = self.config_handler.get_stats(mode)
 
         if mode == "man_vs_ai":
@@ -98,13 +153,28 @@ class StatisticWindow(QWidget):
 
 
 class GameWindow(QMainWindow):
+    """!
+    @brief Main game window implementation.
+
+    Implements the main game interface including game controls,
+    move selection, game mode switching, and serial communication
+    with the server.
+    """
     def __init__(self):
+        """!
+        @brief Initialize main game window and setup UI components.
+
+        Sets up serial connection, configures UI elements, and initializes
+        game state variables.
+        """
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowTitle("Rock Paper Scissors")
 
+        ## @brief Configuration handler instance
         self.config_handler = ConfigHandler()
+        ## @brief Current game session tracker
         self.game_session = GameSession()
 
         conn_settings = self.config_handler.get_connection_settings()
@@ -160,21 +230,39 @@ class GameWindow(QMainWindow):
             self.start_ai_game()
 
     def show_statistics(self):
+        """!
+        @brief Display the statistics window to the user.
+        """
         stats = self.config_handler.get_stats()
         self.stat_window = StatisticWindow(stats)
         self.stat_window.show()
 
     def update_stats_display(self):
+        """!
+        @brief Update the statistics counters on the main game window.
+        """
         self.ui.games_played_counter_lb.setText(str(self.game_session.games_played))
         self.ui.first_choice_player_score_lb.setText(str(self.game_session.player_score))
         self.ui.second_choice_player_score_lb.setText(str(self.game_session.server_score))
 
     def reset_all_stats(self):
+        """!
+        @brief Reset all game statistics to their initial state.
+        """
         self.config_handler.reset_stats()
         self.game_session = GameSession()
         self.update_stats_display()
 
     def update_choice_icons(self, player_choice, server_choice):
+        """!
+        @brief Update the UI with move choice icons.
+
+        Loads and displays the appropriate images for both player
+        and server moves.
+
+        @param player_choice Player's move choice
+        @param server_choice Server's move choice
+        """
         src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         root_dir = os.path.dirname(src_dir)
         media_dir = os.path.join(root_dir, "media")
@@ -190,6 +278,9 @@ class GameWindow(QMainWindow):
         self.ui.second_choice_icon_lb.setPixmap(server_pixmap)
 
     def setup_combo_boxes(self):
+        """!
+        @brief Populate game mode and difficulty combo boxes with initial values.
+        """
         game_modes = ["Human vs AI", "PVP", "AI vs AI"]
         self.ui.game_mode_combo.addItems(game_modes)
         current_mode = self.config_handler.get_game_settings()['default_mode']
@@ -206,6 +297,11 @@ class GameWindow(QMainWindow):
         self.ui.difficulty_combo.setCurrentText(current_difficulty.capitalize())
 
     def on_game_mode_changed(self, mode):
+        """!
+        @brief Update the game mode based on user selection and reconfigure the UI accordingly.
+
+        @param mode The selected game mode from the combo box.
+        """
         self.game_session = GameSession()
         self.update_stats_display()
 
@@ -241,23 +337,46 @@ class GameWindow(QMainWindow):
         self.config_handler.update_game_mode(mode_value)
 
     def on_difficulty_changed(self, difficulty):
+        """!
+        @brief Update the AI difficulty level based on user selection.
+
+        @param difficulty The selected difficulty level from the combo box.
+        """
         self.config_handler.update_difficulty(difficulty.lower())
 
     def make_ai_move(self):
+        """!
+        @brief Generate a random move for AI during AI vs AI game mode.
+        """
         moves = ["rock", "paper", "scissors"]
         ai_move = random.choice(moves)
         self.make_move(ai_move)
 
     def start_ai_game(self):
+        """!
+        @brief Start the AI vs AI game mode with automatic moves.
+        """
         self.ai_timer.start(2000)
 
     def stop_ai_game(self):
+        """!
+        @brief Stop the AI vs AI game mode.
+        """
         self.ai_timer.stop()
         current_mode = self.config_handler.get_game_settings()['default_mode']
         self.ui.stop_btn.setVisible(False)
         self.ui.game_mode_combo.setCurrentText(current_mode)
 
     def make_move(self, choice):
+        """!
+        @brief Process player move and communicate with server.
+
+        Sends the player's move to the server via serial connection,
+        receives and processes the server's response, and updates the UI
+        accordingly.
+
+        @param choice Player's move ("rock", "paper", or "scissors")
+        """
         self.ser.reset_input_buffer()
 
         current_mode = self.ui.game_mode_combo.currentText()
@@ -316,6 +435,11 @@ class GameWindow(QMainWindow):
             self.ser.timeout = original_timeout
 
     def closeEvent(self, event):
+        """!
+        @brief Handle application close event to safely close the serial connection.
+
+        @param event The close event.
+        """
         self.ser.close()
         event.accept()
 
